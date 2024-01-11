@@ -14,7 +14,7 @@ app.set('views', rutas.views); //Para cambiar
 //Controladores para responder a las peticiones por HTTP
 
 app.get('/saludo', (req, res, next) => {
-    res.render('prueba');
+    res.render('prueba', {nombre: 'Nieves'});
 });
 
 app.get('/automovil', (req, res, next) => {
