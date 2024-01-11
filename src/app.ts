@@ -1,12 +1,22 @@
 import express from "express";
 
+import { rutas } from "./utils/rutas.js";
+
 console.log('----------------------------------------------------------------------');
 console.log("Bienvenido a mi app");
 
 const port = 3000;
 
 const app = express();
+
+app.set('view engine', 'ejs');
+app.set('views', rutas.views); //Para cambiar
 //Controladores para responder a las peticiones por HTTP
+
+app.get('/saludo', (req, res, next) => {
+    res.render('prueba');
+});
+
 app.get('/automovil', (req, res, next) => {
     console.log("Pasamos por el primer middleware app.get");
     res.redirect("/coche")
