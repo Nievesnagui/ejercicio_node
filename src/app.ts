@@ -1,5 +1,39 @@
-console.log('----------------------------------------------------------------------');
+import express from "express";
 
+console.log('----------------------------------------------------------------------');
+console.log("Bienvenido a mi app");
+
+const port = 3000;
+
+const app = express();
+//Controladores para responder a las peticiones por HTTP
+app.get('/automovil', (req, res, next) => {
+    console.log("Pasamos por el primer middleware app.get");
+    res.redirect("/coche")
+});
+
+app.use('/coche', (req, res, next) => {
+    console.log("Ha llegado una petición");
+    next();
+});
+
+app.use('/coche', (req, res, next) => {
+    console.log("Estamos en el segundo middleware");
+    res.send({ "message": "ok" });
+});
+
+app.use('/', (req, res, next) => {
+    console.log("Middleware del final");
+    res.status(404).send({'error': 'mal hecho'});
+});
+
+//Fin
+
+app.listen(port);
+console.log("Servidor de la app en marcha");
+
+/*
+//Ejemplos
 let a: Number | string = 5;
 a = "Holis";
 
@@ -26,4 +60,4 @@ const person2: personas = {
     role: [2, 'micho'],
     medida: Talla.XS
 }
-
+*/
