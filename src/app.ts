@@ -1,6 +1,8 @@
 import express, {urlencoded} from "express";
 
 import { rutas } from "./utils/rutas.js";
+import { adminRouter } from "./routes/adminRoutes.js";
+import { shopRouter } from "./routes/shopRoutes.js";
 
 console.log('----------------------------------------------------------------------');
 console.log("Bienvenido a mi app");
@@ -12,6 +14,9 @@ const app = express();
 app.use(urlencoded({extended: false})); //Middleware para procesar los campos que envíen por HTTP (antes era un body-parser)
 app.set('view engine', 'ejs');
 app.set('views', rutas.views); //Para cambiar
+
+app.use('/admin', adminRouter);
+app.use('/', shopRouter);
 //Controladores para responder a las peticiones por HTTP
 
 app.use('/coche', (req, res, next) => {
