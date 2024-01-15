@@ -1,9 +1,10 @@
 import {Router} from "express";
+import { productos } from "./adminRoutes.js";
 
 export const shopRouter = Router();
 
 shopRouter.get('/', (req, res, next) => {
-    res.render('shop', {pageTitle:'Tienda', path:'/', prods: []});
+    res.render('shop', {pageTitle:'Tienda', path:'/', prods: productos});
 });
 
 shopRouter.get('/saludo', (req, res, next) => {
