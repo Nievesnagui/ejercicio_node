@@ -1,4 +1,4 @@
-import express from "express";
+import express, {urlencoded} from "express";
 
 import { rutas } from "./utils/rutas.js";
 
@@ -9,18 +9,10 @@ const port = 3000;
 
 const app = express();
 
+app.use(urlencoded({extended: false})); //Middleware para procesar los campos que envíen por HTTP (antes era un body-parser)
 app.set('view engine', 'ejs');
 app.set('views', rutas.views); //Para cambiar
 //Controladores para responder a las peticiones por HTTP
-
-app.get('/saludo', (req, res, next) => {
-    res.render('prueba', {nombre: 'Nieves'});
-});
-
-app.get('/automovil', (req, res, next) => {
-    console.log("Pasamos por el primer middleware app.get");
-    res.redirect("/coche")
-});
 
 app.use('/coche', (req, res, next) => {
     console.log("Ha llegado una petición");
