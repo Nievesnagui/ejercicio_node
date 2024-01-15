@@ -3,7 +3,7 @@ import {Router} from "express";
 export const shopRouter = Router();
 
 shopRouter.get('/', (req, res, next) => {
-    res.render('shop', {pageTitle:'Tienda', path:'/', prods: [{title: 'libro'}]});
+    res.render('shop', {pageTitle:'Tienda', path:'/', prods: []});
 });
 
 shopRouter.get('/saludo', (req, res, next) => {
