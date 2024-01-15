@@ -19,6 +19,8 @@ app.use('/admin', adminRouter);
 app.use('/', shopRouter);
 //Controladores para responder a las peticiones por HTTP
 
+app.use(express.static(rutas.public));
+
 app.use('/coche', (req, res, next) => {
     console.log("Ha llegado una petición");
     next();
