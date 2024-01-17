@@ -1,12 +1,9 @@
 import {Router} from "express";
-import { productos } from "./adminRoutes.js";
+import { getIndex, getSaludo } from "../controllers/shopController.js";
+
 
 export const shopRouter = Router();
 
-shopRouter.get('/', (req, res, next) => {
-    res.render('shop/product-list', {pageTitle:'Tienda', path:'/', prods: productos});
-});
+shopRouter.get('/', getIndex);
 
-shopRouter.get('/saludo', (req, res, next) => {
-    res.render('prueba', {nombre: 'Nieves'});
-});
+shopRouter.get('/saludo', getSaludo);
