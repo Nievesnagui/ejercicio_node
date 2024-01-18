@@ -40,6 +40,7 @@ app.use('/', (req, res, next) => {
 
 app.listen(port);
 console.log("Servidor de la app en marcha");
+console.log(`Página disponible en: http://localhost:${port}`);
 
 /*
 //Ejemplos
