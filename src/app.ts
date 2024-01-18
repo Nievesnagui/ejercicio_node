@@ -33,7 +33,7 @@ app.use('/coche', (req, res, next) => {
 
 app.use('/', (req, res, next) => {
     console.log("Middleware del final");
-    res.status(404).send({'error': 'mal hecho'});
+    res.render('404.ejs', {pageTitle: "Página no encontrada", path: ""});
 });
 
 //Fin
