@@ -6,15 +6,19 @@ export class Product {
         public title: string,
         public imageUrl: string,
         public description: string,
-        public price: number
+        public price: number,
+        public id?: number
     ){
     }
 
     save(){
-        products.push(this);
-    }
+        if(!this.id){
+            this.id = Math.round(Math.random()*1000000);
+            products.push(this);
+        } 
+    };
 
     static fetchAll(){
         return products;
-    }
+    };
 }

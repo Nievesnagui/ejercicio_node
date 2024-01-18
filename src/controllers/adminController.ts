@@ -1,6 +1,10 @@
 import { Request, Response, NextFunction } from "express";
 import { Product } from "../models/Product.js";
 
+export const getProducts = (req: Request, res: Response, next: NextFunction) => {
+res.render('admin/product', {pageTitle:'Admin Products', path:'/admin/products', prods: Product.fetchAll()})
+};
+
 export const getAddProduct = (req: Request, res: Response, next: NextFunction) => {
     console.log("Devolver formulario para meter productos");
     res.render('admin/edit-product',{pageTitle: "Formulario", path: "/admin/add-product", editing: false})
@@ -19,5 +23,6 @@ export const postAddProduct = (req: Request, res: Response, next: NextFunction) 
         );
         product.save();
     }
-    res.redirect('/');
+    res.redirect('/products');
 }
+
